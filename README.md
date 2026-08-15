@@ -142,38 +142,6 @@ A dual-currency measure exposes revenue in both INR and USD off the same fact ta
 
 ---
 
-## Repository Structure
-
-```
-├── README.md
-├── notebooks/
-│   ├── copy_data_to_delta.ipynb       # CSV → bronze_sales
-│   ├── transform_bronze_to_silver.ipynb
-│   └── silver_to_gold.ipynb           # fact + dimension build
-├── warehouse/
-│   └── schema.sql                     # analytics schema DDL
-├── semantic-model/
-│   └── measures.dax
-└── screenshots/
-    ├── report-sales-overview.png
-    ├── pipeline-orchestration.png
-    ├── lakehouse-medallion.png
-    └── warehouse-star-schema.png
-```
-
----
-
-## Reproducing This Project
-
-1. Create a Fabric workspace with capacity or trial enabled.
-2. Create a Lakehouse (`lh_sales`) and a Warehouse (`wh_sales`).
-3. Upload your sales CSV to the lakehouse Files area.
-4. Import the notebooks from `notebooks/` and repoint them at your lakehouse.
-5. Build a pipeline chaining the five activities described above, adding a `Sourcefilename` string parameter.
-6. Run the pipeline and confirm bronze, silver, and gold tables populate in order.
-7. Create a DirectLake semantic model over the Gold tables, add the measures from `semantic-model/`, and build the report.
-
----
 
 ## What I Took Away From This
 
