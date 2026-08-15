@@ -2,7 +2,7 @@
 
 An end-to-end data engineering solution on Microsoft Fabric: an orchestrated pipeline ingests raw sales data, refines it through a three-layer Medallion architecture (Bronze → Silver → Gold), lands a star schema in a Fabric Data Warehouse, and serves an executive sales dashboard over DirectLake.
 
-![Sales Analytics Overview](screenshots/report-sales-overview.png)
+![Sales Analytics Overview](sales_analytics_overview.png)
 
 ---
 
@@ -62,7 +62,7 @@ Keeping Bronze immutable is the point of the pattern: when a transformation rule
 
 ## Pipeline Orchestration
 
-![Pipeline](screenshots/pipeline-orchestration.png)
+![Pipeline](pipeline-orchestration.png)
 
 `Pl_ingest_sales` chains five activities with success-dependency links, so a failure at any stage halts the run rather than propagating bad data downstream:
 
@@ -78,7 +78,7 @@ Keeping Bronze immutable is the point of the pattern: when a transformation rule
 
 ## Data Model
 
-![Warehouse star schema](screenshots/warehouse-star-schema.png)
+![Warehouse star schema](warehouse-star-schema.png)
 
 A classic star schema in the `analytics` schema of `wh_sales`:
 
@@ -88,7 +88,7 @@ A classic star schema in the `analytics` schema of `wh_sales`:
 
 Star schema was chosen over a flat wide table deliberately: it keeps the fact narrow, makes filter propagation predictable in the semantic model, and lets dimensions be reused if a second fact (returns, targets) is added later.
 
-![Lakehouse tables](screenshots/lakehouse-medallion.png)
+![Lakehouse tables](lakehouse-medallion.png)
 
 ---
 
